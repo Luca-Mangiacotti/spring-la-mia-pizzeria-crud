@@ -15,5 +15,6 @@ header {
 
 /* Standardizzazione delle immagini delle pizze */
 .pizzapic {
-  max-width: 150px;
+  max-width: 100px;
+  height: 100px;
 }
