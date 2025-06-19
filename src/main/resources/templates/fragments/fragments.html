@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- blocco per lo stile -->
+    <th:block th:fragment="Style">
+      <!-- Bootstrap for thymeleaf -->
+      <link
+        th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"
+        rel="stylesheet"
+      />
+      <!-- Foglio stile -->
+      <link rel="stylesheet" th:href="@{/css/AppCss.css}" />
+    </th:block>
+
+    <!-- Blocco per header -->
+    <th:block th:fragment="header">
+      <header
+        class="d-flex align-items-center justify-content-between px-5 rounded-bottom"
+      >
+        <a th:href="@{/}"
+          ><img alt="logo" th:src="@{/imgs/logo.png}" class="logo"
+        /></a>
+        <nav>
+          <a
+            th:href="@{/pizzas/index}"
+            class="btn font-weight-bold text-white hov"
+            >Elenco pizze</a
+          >
+        </nav>
+      </header>
+    </th:block>
+  </body>
+</html>

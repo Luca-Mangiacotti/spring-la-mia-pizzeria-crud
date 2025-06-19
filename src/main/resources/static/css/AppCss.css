@@ -1,0 +1,19 @@
+header {
+  background-color: #ff5454;
+  border-bottom: solid yellow 5px;
+}
+
+.logo {
+  max-width: 15%;
+}
+
+/* hover per bottoni nav */
+.hov:hover {
+  background-color: yellow;
+  color: black;
+}
+
+/* Standardizzazione delle immagini delle pizze */
+.pizzapic {
+  max-width: 150px;
+}
