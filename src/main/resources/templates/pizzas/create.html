@@ -18,6 +18,15 @@
           method="post"
           th:object="${pizza}"
         >
+          <!-- Aggiungiamo un blocco che servirà per controllare gli errori di inserimento
+         e verrà visualizzato solamente in quel caso -->
+
+          <div class="mb-3" th:if="${#fields.hasErrors()}">
+            <ul class="alert alert-warning">
+              <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+            </ul>
+          </div>
+
           <div class="mb-3">
             <label class="form-label" for="name">Nome: </label>
             <input
