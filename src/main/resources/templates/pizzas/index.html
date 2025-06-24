@@ -9,19 +9,28 @@
   </head>
   <body>
     <header th:replace="~{ fragments/fragments :: header}"></header>
-    <main class="text-center overflow-x-hidden">
+    <main class="container text-center overflow-x-hidden">
       <h1 class="mt-5 mb-3">ELENCO DELLE NOSTRE PIZZE IN 8 BIT</h1>
+      <div class="d-flex container justify-content-between align-items-center">
+        <a th:href="@{/pizzas/create}" class="btn btn-xs btn-warning"
+          >Crea una Pizza</a
+        >
 
-      <form th:action="@{/pizzas}" method="get">
-        <input
-          class="mt-5 mb-5"
-          type="text"
-          name="keyword"
-          placeholder="Cerca pizza"
-          th:value="${keyword}"
-        />
-        <button type="submit">Cerca</button>
-      </form>
+        <form
+          th:action="@{/pizzas}"
+          method="get"
+          class="d-flex align-items-center gap-3"
+        >
+          <input
+            class="mt-5 mb-5 border-warning border-5"
+            type="text"
+            name="keyword"
+            placeholder="Cerca pizza"
+            th:value="${keyword}"
+          />
+          <button type="submit" class="btn btn-warning">Cerca</button>
+        </form>
+      </div>
 
       <div class="row">
         <div class="col-12">
@@ -40,7 +49,7 @@
                 <td>[[*{name}]]</td>
                 <td>[[*{description}]]</td>
                 <td><img th:src="*{foto}" alt="#" class="pizzapic" /></td>
-                <td>[[*{price}]]</td>
+                <td>[[*{price}]] €</td>
                 <td th:insert="~{ fragments/fragments :: pizzalink}"></td>
               </tr>
             </tbody>
