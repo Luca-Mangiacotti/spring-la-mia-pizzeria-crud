@@ -11,6 +11,17 @@
     <header th:replace="~{ fragments/fragments :: header}"></header>
     <main class="text-center overflow-x-hidden">
       <h1 class="mt-5 mb-3">ELENCO DELLE NOSTRE PIZZE IN 8 BIT</h1>
+
+      <form th:action="@{/pizzas}" method="get">
+        <input
+          type="text"
+          name="keyword"
+          placeholder="Cerca pizza"
+          th:value="${keyword}"
+        />
+        <button type="submit">Cerca</button>
+      </form>
+
       <div class="row">
         <div class="col-12">
           <table class="table" th:if="${pizzas.size() > 0}">
