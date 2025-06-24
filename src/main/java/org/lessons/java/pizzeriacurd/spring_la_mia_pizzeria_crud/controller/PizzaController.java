@@ -42,10 +42,16 @@ public class PizzaController {
         Pizza pizza = repository.findById(id).get();
 
         if (pizza == null) {
-            return "rederict:/pizzas/index";
+            return "rederict:/pizzas";
         }
         model.addAttribute("pizza", pizza);
 
         return "pizzas/detail";
+    }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+        model.addAttribute("pizza", new Pizza());
+        return "pizzas/create";
     }
 }
