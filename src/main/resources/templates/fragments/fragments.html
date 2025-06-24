@@ -32,5 +32,14 @@
         </nav>
       </header>
     </th:block>
+
+    <!-- Blocco per bottone di collegamento -->
+    <th:block th:fragment="pizzalink">
+      <a
+        th:href="@{'/pizzas/'+ ${pizza.id}}"
+        class="btn font-weight-bold btn-danger hov"
+        >dettaglio</a
+      >
+    </th:block>
   </body>
 </html>
