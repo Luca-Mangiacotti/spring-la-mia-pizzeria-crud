@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title th:text="'Pizzeria - ' + ${pizza.name}"></title>
+    <title th:text="'Pizzeria - Crea una nuova pizza'"></title>
     <!-- Blocco per stile bootsrap e css -->
     <th:block th:replace="~{ fragments/fragments :: Style}"></th:block>
   </head>
@@ -14,21 +14,35 @@
       <div class="container">
         <form
           id="new-pizza-form"
-          action="@{/pizzas/create}"
+          th:action="@{/pizzas/create}"
           method="post"
           th:object="${pizza}"
         >
           <div class="mb-3">
             <label class="form-label" for="name">Nome: </label>
-            <input class="form-control mx-auto" type="text" id="name" />
+            <input
+              class="form-control mx-auto"
+              type="text"
+              id="name"
+              th:field="*{name}"
+            />
           </div>
           <div class="mb-3">
             <label class="form-label" for="description">Descrizione: </label>
-            <textarea class="form-control mx-auto" id="description"></textarea>
+            <textarea
+              class="form-control mx-auto"
+              id="description"
+              th:field="*{description}"
+            ></textarea>
           </div>
           <div class="mb-3">
             <label class="form-label" for="foto">Foto (url): </label>
-            <input class="form-control mx-auto" type="text" id="foto" />
+            <input
+              class="form-control mx-auto"
+              type="text"
+              id="foto"
+              th:field="*{foto}"
+            />
           </div>
           <div class="mb-3">
             <label class="form-label" for="price">Prezzo (€): </label>
@@ -38,6 +52,7 @@
               min="0"
               step="0.01"
               id="price"
+              th:field="*{price}"
             />
           </div>
           <div class="mb-3 d-flex justify-content-center">
