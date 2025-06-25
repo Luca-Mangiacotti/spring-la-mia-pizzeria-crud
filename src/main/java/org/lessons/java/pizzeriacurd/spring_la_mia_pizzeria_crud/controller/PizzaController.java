@@ -24,6 +24,8 @@ public class PizzaController {
     @Autowired
     private PizzaRepository repository;
 
+    // INDEX DEI PRODOTTI (INDEX)
+
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String keyword, Model model) {
 
@@ -41,6 +43,8 @@ public class PizzaController {
         return "pizzas/index";
     }
 
+    // DETTAGLIO DI UN PRODOTTO (SHOW)
+
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
 
@@ -55,6 +59,8 @@ public class PizzaController {
         return "pizzas/detail";
     }
 
+    // AGGIUNTA DI UN NUOVO PRODOTTO (CREATE)
+
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
@@ -68,6 +74,30 @@ public class PizzaController {
         // in caso ci fossero ci sarà un indirizzamento allo stesso form
         if (bindingResult.hasErrors()) {
             return "pizzas/create";
+        }
+
+        // nel caso non ci siano errori possiamo salvare il nostro prodotto tramite la
+        // repository con il comando .save
+        repository.save(pizzaForm);
+        return "redirect:/pizzas";
+
+    }
+
+    // MODIFICA DI UN PRODOTTO (UPDATE)
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("pizza", repository.findById(id).get());
+        return "pizzas/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String update(@Valid @ModelAttribute("pizza") Pizza pizzaForm, BindingResult bindingResult, Model model) {
+        // utilizziamo il bindingResult per far verificare al validatore se ci sono
+        // stati errori di inserimento nel form
+        // in caso ci fossero ci sarà un indirizzamento allo stesso form
+        if (bindingResult.hasErrors()) {
+            return "pizzas/edit";
         }
 
         // nel caso non ci siano errori possiamo salvare il nostro prodotto tramite la
