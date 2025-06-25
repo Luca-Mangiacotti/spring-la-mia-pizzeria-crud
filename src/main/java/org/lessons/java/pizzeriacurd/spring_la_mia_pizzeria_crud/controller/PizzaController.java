@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.lessons.java.pizzeriacurd.spring_la_mia_pizzeria_crud.model.Pizza;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/pizzas")
@@ -106,4 +107,16 @@ public class PizzaController {
         return "redirect:/pizzas";
 
     }
+
+    // ELIMINAZIONE DI UN PRODOTTO (DELETE)
+    // andando a prendere l'elemento tramite id dal db ci serviamo della repository
+    // che utilizza il metodo
+    // deleteById(idProdotto)
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        repository.deleteById(id);
+        return "redirect:/pizzas";
+    }
+
 }

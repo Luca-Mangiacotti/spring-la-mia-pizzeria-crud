@@ -17,9 +17,18 @@
       <img th:src="*{foto}" alt="#" class="pizzapicDetail mb-3" />
       <h3 th:text="'Descrizione: '+ *{description}"></h3>
       <h4 th:text="'Prezzo: ' + *{price} + ' €'"></h4>
-      <a th:href="@{/pizzas/edit/} + *{id}" class="btn btn-warning mb-5"
-        >Modifica</a
-      >
+      <div class="d-flex justify-content-center gap-5">
+        <a th:href="@{/pizzas/edit/} + *{id}" class="btn btn-warning mb-5"
+          >Modifica</a
+        >
+        <form
+          th:action="@{/pizzas/delete/{id} (id = *{id})}"
+          th:method="post"
+          id="delete-form"
+        >
+          <button class="btn btn-danger" type="submit">Elimina</button>
+        </form>
+      </div>
     </main>
     <footer></footer>
   </body>
