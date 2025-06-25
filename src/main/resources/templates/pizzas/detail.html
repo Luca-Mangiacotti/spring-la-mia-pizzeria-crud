@@ -21,15 +21,73 @@
         <a th:href="@{/pizzas/edit/} + *{id}" class="btn btn-warning mb-5"
           >Modifica</a
         >
-        <form
-          th:action="@{/pizzas/delete/{id} (id = *{id})}"
-          th:method="post"
-          id="delete-form"
-        >
-          <button class="btn btn-danger" type="submit">Elimina</button>
-        </form>
+        <!-- PER EFFETTUARE UNA DELETE DEL PRODOTTO DOBBIAMO NECESSARIAMENTE UTILIZZARE UN FORM
+         PERCHè IL COMPONENTE "A TH:HREF" PUò EFFETTUARE SOLO CHIAMATE GET, QUINDI CI SERVIAMO 
+         DI UN BOTTONE CHE FUNGERà DA SUBMIT IN UN FORM CON IL METODO "POST" -->
+
+        <!-- Button trigger modal -->
+        <div>
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Elimina
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Attenzione
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  Sei sicuro di voler eliminare la pizza "[[${pizza.name}]]" ?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Annulla
+                  </button>
+                  <form
+                    th:action="@{/pizzas/delete/{id} (id = *{id})}"
+                    th:method="post"
+                    id="delete-form"
+                  >
+                    <button class="btn btn-danger" type="submit">
+                      Elimina
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer></footer>
+    <!-- Blocco per JS -->
+    <th:block th:replace="~{ fragments/fragments :: BootJS}"></th:block>
   </body>
 </html>
