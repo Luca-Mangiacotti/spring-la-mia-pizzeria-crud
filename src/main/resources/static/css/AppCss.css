@@ -12,8 +12,14 @@ header {
   background-color: yellow;
 }
 
-/* Standardizzazione delle immagini delle pizze */
+/* Standardizzazione delle immagini delle pizze per index */
 .pizzapic {
   max-width: 100px;
   height: 100px;
+}
+
+/* Standardizzazione delle immagini delle pizze per il dettaglio della pizza */
+.pizzapicDetail {
+  max-width: 500px;
+  height: 500px;
 }

@@ -10,11 +10,16 @@
   <body>
     <header th:replace="~{ fragments/fragments :: header}"></header>
     <main class="text-center overflow-x-hidden" th:object="${pizza}">
-      <a th:href="@{/}"> Torna alla Home </a>
+      <a th:href="@{/}" class="btn btn-warning mt-5 border-2-danger">
+        Torna alla Home
+      </a>
       <h1 th:text="*{name}" class="mt-5"></h1>
-      <img th:src="*{foto}" alt="#" class="pizzapic" />
+      <img th:src="*{foto}" alt="#" class="pizzapicDetail mb-3" />
       <h3 th:text="'Descrizione: '+ *{description}"></h3>
       <h4 th:text="'Prezzo: ' + *{price} + ' €'"></h4>
+      <a th:href="@{/pizzas/edit/} + *{id}" class="btn btn-warning mb-5"
+        >Modifica</a
+      >
     </main>
     <footer></footer>
   </body>
